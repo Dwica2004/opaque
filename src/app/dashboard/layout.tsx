@@ -50,10 +50,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         <div>
-           {mounted && isConnected ? (
-             <button className="btn-outline mono" style={{ width: "100%", padding: "12px", fontSize: "11px", borderColor: "#1a1a1a", color: "#999", background: "transparent" }} onClick={() => disconnect()}>
-               {address?.slice(0,6)}...{address?.slice(-4)}
-             </button>
+         {mounted && isConnected ? (
+             <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+               <div className="mono" style={{ fontSize: "10px", color: "#555", letterSpacing: "1px", paddingLeft: "2px" }}>CONNECTED WALLET</div>
+               <div className="mono" style={{ fontSize: "11px", color: "#4ade80", padding: "8px 12px", background: "rgba(74,222,128,0.05)", border: "1px solid rgba(74,222,128,0.15)" }}>
+                 {address?.slice(0,8)}...{address?.slice(-4)}
+               </div>
+               <button
+                 className="mono"
+                 onClick={() => disconnect()}
+                 style={{ width: "100%", padding: "10px", fontSize: "11px", background: "rgba(255,50,50,0.06)", border: "1px solid rgba(255,50,50,0.25)", color: "#ff6666", cursor: "pointer", letterSpacing: "1px", transition: "all 0.2s" }}
+                 onMouseOver={e => { e.currentTarget.style.background = "rgba(255,50,50,0.15)"; e.currentTarget.style.borderColor = "#ff4444"; e.currentTarget.style.color = "#fff"; }}
+                 onMouseOut={e => { e.currentTarget.style.background = "rgba(255,50,50,0.06)"; e.currentTarget.style.borderColor = "rgba(255,50,50,0.25)"; e.currentTarget.style.color = "#ff6666"; }}
+               >
+                 ⏻ DISCONNECT
+               </button>
+             </div>
            ) : (
              <ConnectButton.Custom>
                {({ openConnectModal }) => (
