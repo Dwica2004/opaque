@@ -11,6 +11,18 @@ export const OpaqueVaultABI = [
     "type": "function"
   },
   {
+    "inputs": [
+      { "internalType": "address", "name": "recipient", "type": "address" },
+      { "internalType": "address", "name": "token", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "bytes32", "name": "proofId", "type": "bytes32" }
+    ],
+    "name": "unshield",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "anonymous": false,
     "inputs": [
       { "indexed": true, "internalType": "address", "name": "sender", "type": "address" },
@@ -121,5 +133,5 @@ export const MockUSDCABI = [
 
 // ── Known testnet addresses (Arbitrum Sepolia) ────────────────────
 // Set these in .env.local — never hardcode contract addresses
-export const MOCK_USDC_ADDRESS = (process.env.NEXT_PUBLIC_MOCK_USDC_ADDRESS ?? "") as `0x${string}`;
+export const USDC_ADDRESS = (process.env.NEXT_PUBLIC_USDC_ADDRESS ?? "") as `0x${string}`;
 export const VAULT_ADDRESS = (process.env.NEXT_PUBLIC_VAULT_ADDRESS ?? "") as `0x${string}`;
