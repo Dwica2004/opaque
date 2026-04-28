@@ -146,9 +146,9 @@ export default function ShieldPage() {
     try {
       const gasPrice = await client.getGasPrice();
       // Add 20% buffer to avoid 'max fee per gas less than base fee'
-      return (gasPrice * 120n) / 100n;
+      return (gasPrice * BigInt(120)) / BigInt(100);
     } catch {
-      return 100_000_000n; // fallback: 0.1 gwei
+      return BigInt(100000000); // fallback: 0.1 gwei
     }
   }, [client]);
 
